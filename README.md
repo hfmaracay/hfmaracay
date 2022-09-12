@@ -9,6 +9,7 @@ Sitio Web de la comunidad Hackers/Founders Maracay
 * _Instalar Laravel Jetstream 2.12_
 * _Instalar Laravel Auditing 13.0_
 * _Instalar Bouncer 1.0_
+* _Instalar Fontawesome 6.2.0_
 
 ## Autores ✒️
 
