@@ -10,12 +10,14 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Contracts\Auditable;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable implements Auditable
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
+    use HasRolesAndAbilities;
     use Notifiable;
     use TwoFactorAuthenticatable;
     use \OwenIt\Auditing\Auditable;
@@ -60,4 +62,18 @@ class User extends Authenticatable implements Auditable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Is Rol Admin.
+     */
+    public function isRol($role)
+    {
+        $vocals = array('a','e','i','o','u');
+
+        if(in_array($role[0], $vocals)) {
+            return $this->isAn($role);
+        } else {
+            return $this->isA($role);
+        }
+    }
 }
