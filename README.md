@@ -7,6 +7,7 @@ Sitio Web de la comunidad Hackers/Founders Maracay
 * _Instalar Laravel 9.0._
 * _Instalar MySQL 8.0._
 * _Instalar Laravel Jetstream 2.12_
+* _Instalar Laravel Auditing 13.0_
 
 ## Autores ✒️
 
