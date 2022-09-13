@@ -12,8 +12,21 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'hfred': '#ff6967',
+                'hfgray': {
+                    DEFAULT: '#2f364b',
+                    light: '#e2e2e2',
+                    medium: '#afafaf',
+                },
+                'hfblue': {
+                    DEFAULT: '#60a5fa',
+                    light: '#bde6f4',
+                    dark: '#387bd9',
+                }
+            }
         },
     },
 
