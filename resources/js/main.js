@@ -15,9 +15,9 @@
     
     // === logo change
     if (ud_header.classList.contains("sticky")) {
-      logo.src = "img/HFMaracay_Blanco_Horizontal.png";
+      logo.src = "img/HFMaracay_Color.png";
     } else {
-      logo.src = "img/HFMaracay_Blanco_Horizontal.png";
+      logo.src = "img/HFMaracay_Blanco.png";
     }
 
     // show or hide the back-top-top button
