@@ -939,11 +939,11 @@
   <!-- ====== Team Section End -->
 
   <!-- ====== Contact Start ====== -->
-  <section id="contact" class="py-20 md:py-[120px] relative">
+  <section id="contact" class="py-20 relative">
     <div class="absolute z-[-1] w-full h-1/2 lg:h-[45%] xl:h-1/2 bg-hfgray-light top-0 left-0"></div>
     <div class="container px-4">
       <div class="flex flex-wrap items-center -mx-4">
-        <div class="px-4 w-full lg:w-7/12 xl:w-8/12">
+        <div class="px-4 w-full lg:w-7/12">
           <div class="ud-contact-content-wrapper">
             <div class="ud-contact-title mb-12 lg:mb-[150px]">
               <span class="text-dark font-semibold text-base mb-5">
@@ -979,29 +979,60 @@
             </div>
           </div>
         </div>
-        <div class="px-4 w-full lg:w-5/12 xl:w-4/12">
+        <div class="px-4 w-full lg:w-5/12">
           <div class="shadow-testimonial rounded-lg bg-white py-10 px-8 md:p-[60px] lg:p-10 2xl:p-[60px] sm:py-12 sm:px-10 lg:py-12 lg:px-10 wow fadeInUp" data-wow-delay=".2s">
             <h3 class="font-semibold mb-8 text-2xl md:text-[26px]">
               Escríbenos
             </h3>
-            <form>
-              <div class="mb-6">
-                <label for="name" class="block text-xs text-dark">Nombre*</label>
-                <input type="text" name="name" placeholder="Maria Perez" class="w-full border-0 border-b border-[#f1f1f1] focus:border-primary focus:outline-none py-4" />
+            <div class="text-sm text-green-600 bg-green-200 px-2 py-1 my-2 {{ !session()->has('message') ? 'hidden' : '' }}">
+              {{ session()->has('message') ? session()->get('message') : '' }}
+            </div>
+            @if ($errors->any())
+              <div class="text-sm text-red-600 bg-red-200 px-2 py-1 my-2">
+                <ul class="list-disc list-inside">
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
               </div>
-              <div class="mb-6">
-                <label for="email" class="block text-xs text-dark">Email*</label>
-                <input type="email" name="email" placeholder="nombre@email.com" class="w-full border-0 border-b border-[#f1f1f1] focus:border-primary focus:outline-none py-4" />
+            @endif
+            <form id="form-contact" name="form-contact" method="POST" action="{{ route('contact.store') }}" enctype="multipart/form-data">
+              @csrf
+              <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+                <div>
+                  <label for="first_name" class="block text-sm text-dark font-semibold">Nombre</label>
+                  <input type="text" id="first_name" name="first_name" value="{{ old('first_name') }}" placeholder="Maria" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2" @error('first_name') autofocus @enderror />
+                  @error('first_name')
+                    <div class="text-sm text-red-600">{{ $message }}</div>
+                  @enderror
+                </div>
+                <div>
+                  <label for="last_name" class="block text-sm text-dark font-semibold">Apellido</label>
+                  <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}" placeholder="Perez" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2" />
+                  @error('last_name')
+                    <div class="text-sm text-red-600">{{ $message }}</div>
+                  @enderror
+                </div>
+                <div class="col-span-2">
+                  <label for="email" class="block text-sm text-dark font-semibold">Email</label>
+                  <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="nombre@email.com" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2" />
+                  @error('email')
+                    <div class="text-sm text-red-600">{{ $message }}</div>
+                  @enderror
+                </div>
+                <div class="col-span-2">
+                  <label for="phone" class="block text-sm text-dark font-semibold">Teléfono</label>
+                  <input type="text" id="phone" name="phone" value="{{ old('phone') }}" placeholder="(424)-555-4433" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2" pattern="^\(\d{3}\)-\d{3}-\d{4}$" />
+                </div>
+                <div class="col-span-2">
+                  <label for="message" class="block text-sm text-dark font-semibold">Mensaje</label>
+                  <textarea id="message" name="message" rows="1" placeholder="escribe tu mensaje aquí" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2 resize-none">{{ old('message') }}</textarea>
+                  @error('message')
+                    <div class="text-sm text-red-600">{{ $message }}</div>
+                  @enderror
+                </div>
               </div>
-              <div class="mb-6">
-                <label for="phone" class="block text-xs text-dark">Teléfono*</label>
-                <input type="text" name="phone" placeholder="424 555 44 33" class="w-full border-0 border-b border-[#f1f1f1] focus:border-primary focus:outline-none py-4" />
-              </div>
-              <div class="mb-6">
-                <label for="message" class="block text-xs text-dark">Mensaje*</label>
-                <textarea name="message" rows="1" placeholder="escribe tu mensaje aquí" class="w-full border-0 border-b border-[#f1f1f1] focus:border-primary focus:outline-none py-4 resize-none"></textarea>
-              </div>
-              <div class="mb-0">
+              <div class="mt-4 text-center">
                 <button type="submit" class="inline-flex items-center justify-center py-4 px-6 rounded text-white bg-hfred text-base font-medium hover:bg-dark transition duration-300 ease-in-out">
                   Enviar Mensaje
                 </button>
@@ -1095,7 +1126,7 @@
         <div class="flex flex-wrap -mx-4">
           <div class="w-full md:w-2/3 lg:w-1/2 px-4">
             <p class="text-sm text-[#f3f4fe]">
-              Todos los derechos reservados {{ date('Y') }}
+              &copy; Todos los derechos reservados {{ date('Y') }}
             </p>
           </div>
           <div class="w-full md:w-1/3 lg:w-1/2 px-4">
@@ -1177,6 +1208,18 @@
     }
 
     window.document.addEventListener("scroll", onScroll);
+
+    let phone = document.getElementById('phone');
+  
+    function formatTlf(e) {
+      if ((this.value.length < 15) && ((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106))) {
+        this.value = this.value.replace(/\(?(\d{3})\)?\-?(\d{3})\-?/, '($1)-$2-');
+      } else {
+        this.value = this.value.slice(0, -1);
+      }
+    }
+
+    phone.addEventListener('keyup', formatTlf);
   </script>
 </body>
 </html>
