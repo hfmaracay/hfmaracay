@@ -999,43 +999,43 @@
             <form id="form-contact" name="form-contact" method="POST" action="{{ route('contact.store') }}" enctype="multipart/form-data">
               @csrf
               <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
-                <div>
-                  <label for="first_name" class="block text-sm text-dark font-semibold">Nombre</label>
-                  <input type="text" id="first_name" name="first_name" value="{{ old('first_name') }}" placeholder="Maria" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2" @error('first_name') autofocus @enderror />
+                <div class="w-full">
+                  <x-jet-label for="first_name" value="{{ __('auth.First_Name') }}" />
+                  <x-jet-input type="text" id="first_name" name="first_name" :value="old('first_name')" placeholder="Maria" required />
                   @error('first_name')
                     <div class="text-sm text-red-600">{{ $message }}</div>
                   @enderror
                 </div>
-                <div>
-                  <label for="last_name" class="block text-sm text-dark font-semibold">Apellido</label>
-                  <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}" placeholder="Perez" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2" />
+                <div class="w-full">
+                  <x-jet-label for="last_name" value="{{ __('auth.Last_Name') }}" />
+                  <x-jet-input type="text" id="last_name" name="last_name" :value="old('last_name')" placeholder="Perez" required />
                   @error('last_name')
                     <div class="text-sm text-red-600">{{ $message }}</div>
                   @enderror
                 </div>
-                <div class="col-span-2">
-                  <label for="email" class="block text-sm text-dark font-semibold">Email</label>
-                  <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="nombre@email.com" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2" />
+                <div class="w-full md:col-span-2">
+                  <x-jet-label for="email" value="{{ __('auth.Email') }}" />
+                  <x-jet-input type="email" id="email" name="email" :value="old('email')" placeholder="nombre@email.com" required />
                   @error('email')
                     <div class="text-sm text-red-600">{{ $message }}</div>
                   @enderror
                 </div>
-                <div class="col-span-2">
-                  <label for="phone" class="block text-sm text-dark font-semibold">Teléfono</label>
-                  <input type="text" id="phone" name="phone" value="{{ old('phone') }}" placeholder="(424)-555-4433" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2" pattern="^\(\d{3}\)-\d{3}-\d{4}$" />
+                <div class="w-full md:col-span-2">
+                  <x-jet-label for="phone" value="{{ __('auth.Phone') }}" />
+                  <x-jet-input type="text" id="phone" name="phone" :value="old('phone')" placeholder="(424)-555-4433" pattern="^\(\d{3}\)-\d{3}-\d{4}$" />
                 </div>
-                <div class="col-span-2">
-                  <label for="message" class="block text-sm text-dark font-semibold">Mensaje</label>
-                  <textarea id="message" name="message" rows="1" placeholder="escribe tu mensaje aquí" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2 resize-none">{{ old('message') }}</textarea>
+                <div class="w-full md:col-span-2">
+                  <x-jet-label for="message" value="Mensaje" />
+                  <textarea id="message" name="message" rows="1" placeholder="escribe tu mensaje aquí" class="w-full border-0 border-b border-[#afafaf] focus:border-hfred focus:outline-none focus:ring focus:ring-red-200 py-2 resize-none" required>{{ old('message') }}</textarea>
                   @error('message')
                     <div class="text-sm text-red-600">{{ $message }}</div>
                   @enderror
                 </div>
               </div>
               <div class="mt-4 text-center">
-                <button type="submit" class="inline-flex items-center justify-center py-4 px-6 rounded text-white bg-hfred text-base font-medium hover:bg-dark transition duration-300 ease-in-out">
+                <x-jet-button>
                   Enviar Mensaje
-                </button>
+                </x-jet-button>
               </div>
             </form>
           </div>
@@ -1052,7 +1052,7 @@
         <div class="w-full sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-3/12 px-4">
           <div class="w-full mb-4">
             <a href="javascript:void(0)" class="inline-block max-w-[160px] mb-6">
-              <img src="{{ asset("img/HFMaracay_Blanco.png") }}" alt="logo" class="max-w-full" />
+              <img src="{{ asset("img/HFMaracay_Blanco.png") }}" alt="HFMARACAY" title="HFMARACAY" class="max-w-full" />
             </a>
           </div>
         </div>
@@ -1156,7 +1156,7 @@
   <!-- ====== Footer Section End -->
 
   <!-- ====== Back To Top Start -->
-  <a href="javascript:void(0)" class="hidden items-center justify-center bg-hfred text-white w-10 h-10 rounded-md fixed bottom-8 right-8 left-auto z-[999] hover:bg-hfblue back-to-top shadow-md transition duration-300 ease-in-out">
+  <a href="javascript:void(0)" class="hidden items-center justify-center bg-hfgray-medium text-white w-10 h-10 rounded-md fixed bottom-8 right-8 left-auto z-[999] hover:bg-hfred back-to-top shadow-md transition duration-300 ease-in-out">
     <span class="w-3 h-3 border-t border-l border-white rotate-45 mt-[6px]"></span>
   </a>
   <!-- ====== Back To Top End -->
@@ -1220,6 +1220,10 @@
     }
 
     phone.addEventListener('keyup', formatTlf);
+
+    if ({{ $errors->any() }}) {
+      document.getElementById('first_name').focus();
+    }
   </script>
 </body>
 </html>

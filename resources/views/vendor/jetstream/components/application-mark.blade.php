@@ -1,0 +1,1 @@
+<img src="{{ asset("img/HFMaracay_Color.png") }}" alt="HFMARACAY" title="HFMARACAY" class="max-h-16" />

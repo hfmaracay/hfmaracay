@@ -1,0 +1,1 @@
+<textarea {{ $attributes }} class="tinymceeditor">{{ $slot }}</textarea>
