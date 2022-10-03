@@ -295,7 +295,7 @@
           <div class="w-full px-4">
             <div class="lg:flex items-center justify-between border overflow-hidden">
               <div class="lg:max-w-[565px] xl:max-w-[640px] w-full py-12 px-7 sm:px-12 md:p-16 lg:py-9 lg:px-16 xl:p-[70px]">
-                <span class="text-sm font-medium text-white py-2 px-5 bg-hfgray inline-block mb-5">
+                <span class="text-sm font-medium text-white py-2 px-5 bg-hfred inline-block mb-5">
                   Comunidad
                 </span>
                 <h2 class="font-bold text-3xl sm:text-4xl 2xl:text-[40px] sm:leading-snug text-dark mb-6">
@@ -310,7 +310,7 @@
                 <p class="text-base text-body-color mb-9 leading-relaxed">
                   Meetups = Reuniones de Panas de Tecnología y Emprendimiento.
                 </p>
-                <a href="javascript:void(0)" class="inline-flex items-center justify-center py-4 px-6 rounded text-white bg-hfred text-base font-medium hover:bg-opacity-90 hover:shadow-lg transition duration-300 ease-in-out">
+                <a href="javascript:void(0)" class="inline-flex items-center justify-center py-4 px-6 rounded text-white text-base bg-hfgray font-medium hover:bg-hfred hover:shadow-lg transition duration-300 ease-in-out">
                   Conoce más <i class="fa-solid fa-chevron-right ml-2"></i>
                 </a>
               </div>
@@ -400,6 +400,32 @@
             <p class="text-body-color mb-8 lg:mb-11">
               Innovamos al crear el primer evento donde los asistentes eran mentoreados para crear la estrategia de lanzamiento de un producto de una empresa local.
             </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-4">
+        <div class="w-full px-4">
+          <div class="text-center mx-auto max-w-[620px]">
+            <span class="text-lg font-semibold text-white py-2 px-5 bg-hfred inline-block mb-5">
+              Próximo Evento
+            </span>
+            <h2 class="font-bold text-3xl sm:text-4xl md:text-[42px] text-dark mb-4">
+              {{ $event->name }}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center overflow-hidden">
+        <div class="w-full lg:w-max rounded-xl md:flex justify-between border border-hfgray">
+          <div class="md:max-w-xs lg:max-w-sm">
+            <img src="{{ asset($event->urlImage) }}" alt="Meetup 35" title="Meetup 35" class="mx-auto rounded-l-xl lg:mr-auto" />
+          </div>
+          <div class="md:max-w-xs lg:max-w-lg w-full p-10 lg:px-16 lg:py-10 rounded-r-xl">
+            <p class="my-4 lg:hidden">{{ $event->resume }}</p>
+            <div class="hidden lg:block">{!! $event->description !!}</div>
+            <a href="javascript:void(0)" class="inline-flex items-center justify-center py-4 px-6 rounded text-white text-base bg-hfgray font-medium hover:bg-hfred hover:shadow-lg transition duration-300 ease-in-out">
+              Regístrate <i class="fa-solid fa-chevron-right ml-2"></i>
+            </a>
           </div>
         </div>
       </div>

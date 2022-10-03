@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -13,6 +14,8 @@ class WelcomeController extends Controller
    */
   public function welcome()
   {
-    return view('welcome');
+    $event = Event::orderBy('id', 'desc')->first();
+
+    return view('welcome')->with('event', $event);
   }
 }

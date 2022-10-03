@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Message extends Model
+class Event extends Model
 {
   use HasFactory;
   use SoftDeletes;
@@ -18,17 +18,27 @@ class Message extends Model
    * @var array
    */
   protected $fillable = [
-    'first_name', 'last_name', 'email', 'phone', 'content', 'answered', 'reply'
+    'name', 'resume', 'description', 'image', 'date', 'time', 'venue'
   ];
 
   /**
-   * Get the user's full name.
+   * The attributes that should be mutated to dates.
    *
-   * @return string
+   * @var array
    */
-  public function getFullNameAttribute()
-  {
-    return "{$this->first_name} {$this->last_name}";
+  protected $dates = ['date'];
+
+  /**
+   * Get the article's image.
+   */
+  public function getUrlImageAttribute() {
+  	if($this->image) {
+			$image = 'storage/events/'.$this->image;
+		} else {
+			$image = 'img/HFMaracay_Color.png';
+		}
+
+		return $image;
   }
 
   /**
