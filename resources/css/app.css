@@ -1,5 +1,48 @@
 @import "@fortawesome/fontawesome-free/css/all.css";
+@import 'flatpickr/dist/flatpickr.min.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sticky {
+  @apply fixed z-[9999] transition bg-white bg-opacity-80;
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.sticky #navbarToggler span {
+  @apply bg-hfgray;
+}
+
+.sticky #navbarCollapse li a {
+  @apply text-hfgray hover:text-hfred;
+}
+
+#navbarCollapse li .ud-menu-scroll.active {
+  @apply opacity-70;
+}
+
+.sticky #navbarCollapse li .ud-menu-scroll.active {
+  @apply opacity-100 text-hfred;
+}
+
+.sticky .loginBtn {
+  @apply text-hfgray hover:text-white hover:bg-hfgray;
+}
+
+.sticky .signUpBtn {
+  @apply text-white bg-hfgray hover:bg-hfred hover:text-white;
+}
+
+.navbarTogglerActive > span:nth-child(1) {
+  @apply transform rotate-45 top-[7px];
+}
+
+.navbarTogglerActive > span:nth-child(2) {
+  @apply opacity-0;
+}
+
+.navbarTogglerActive > span:nth-child(3) {
+  @apply top-[-8px] rotate-[135deg];
+}

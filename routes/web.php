@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\Web\MessageController;
+use App\Http\Controllers\Web\RegistrationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
+Route::post('/contacto', [MessageController::class, 'store'])->name('contact.store');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/eventos/registro', [RegistrationController::class, 'create'])->name('events.registration');
+Route::post('/eventos/registro', [RegistrationController::class, 'store'])->name('registrations.store');

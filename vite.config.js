@@ -6,7 +6,9 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/animate.css',
                 'resources/js/app.js',
+                'resources/js/main.js',
             ],
             refresh: [
                 ...refreshPaths,

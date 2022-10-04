@@ -1,0 +1,1 @@
+<tr {{ $attributes->merge(['class' => 'flex flex-col lg:table-row even:bg-gray-200']) }}>{{ $slot }}</tr>
