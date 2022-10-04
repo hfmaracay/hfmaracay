@@ -100,4 +100,12 @@ class User extends Authenticatable implements Auditable
   {
   	return $filters->applyTo($query, $data);
   }
+
+  /**
+   * The profiles that belong to the user.
+   */
+  public function profiles()
+  {
+    return $this->belongsToMany(Profile::class);
+  }
 }

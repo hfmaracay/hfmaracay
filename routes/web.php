@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Web\MessageController;
+use App\Http\Controllers\Web\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/eventos/registro', [RegistrationController::class, 'create'])->name('events.registration');
+Route::post('/eventos/registro', [RegistrationController::class, 'store'])->name('registrations.store');

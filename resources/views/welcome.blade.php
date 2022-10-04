@@ -423,7 +423,7 @@
           <div class="md:max-w-xs lg:max-w-lg w-full p-10 lg:px-16 lg:py-10 rounded-r-xl">
             <p class="my-4 lg:hidden">{{ $event->resume }}</p>
             <div class="hidden lg:block">{!! $event->description !!}</div>
-            <a href="javascript:void(0)" class="inline-flex items-center justify-center py-4 px-6 rounded text-white text-base bg-hfgray font-medium hover:bg-hfred hover:shadow-lg transition duration-300 ease-in-out">
+            <a href="{{ route('events.registration') }}" class="inline-flex items-center justify-center py-4 px-6 rounded text-white text-base bg-hfgray font-medium hover:bg-hfred hover:shadow-lg transition duration-300 ease-in-out">
               Regístrate <i class="fa-solid fa-chevron-right ml-2"></i>
             </a>
           </div>
