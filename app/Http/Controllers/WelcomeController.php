@@ -14,7 +14,7 @@ class WelcomeController extends Controller
    */
   public function welcome()
   {
-    $event = Event::orderBy('id', 'desc')->first();
+    $event = Event::whereDate('date', '>=', now())->orderBy('date', 'asc')->first();
 
     return view('welcome')->with('event', $event);
   }
