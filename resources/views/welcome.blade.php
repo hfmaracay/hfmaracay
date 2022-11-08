@@ -782,13 +782,10 @@
                 Co-organizador
               </p>
               <div class="flex items-center justify-center">
-                <a href="https://www.facebook.com/marcoah17" target="_blank" class="text-hfgray hover:text-hfred w-8 h-8 mx-2 flex items-center justify-center">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://twitter.com/marcoah17" target="_blank" class="text-hfgray hover:text-hfred w-8 h-8 mx-2 flex items-center justify-center">
+                <a href="https://twitter.com/geologiaymapas" target="_blank" class="text-hfgray hover:text-hfred w-8 h-8 mx-2 flex items-center justify-center">
                   <i class="fab fa-twitter"></i>
                 </a>
-                <a href="https://www.instagram.com/marcoah17/" target="_blank" class="text-hfgray hover:text-hfred w-8 h-8 mx-2 flex items-center justify-center">
+                <a href="https://www.instagram.com/geologiaymapas/" target="_blank" class="text-hfgray hover:text-hfred w-8 h-8 mx-2 flex items-center justify-center">
                   <i class="fab fa-instagram"></i>
                 </a>
               </div>
